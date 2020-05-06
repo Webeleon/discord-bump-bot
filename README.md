@@ -1,3 +1,10 @@
+# Bump bot
+
+2 moderation type commands: !setChannel !setDescription
+1 api type command: !bump (every hour)
+1 api integration: top.gg, every upvote grant a free bump
+
+
 ## Endpoints
 
 - [GET] /discord/bot-invite
@@ -30,6 +37,7 @@ $ npm install
 - PORT : default 5000
 - DISCORD_API_TOKEN
 - DISCORD_CLIENT_ID
+- MONGO_URL
 
 ## Running the app
 

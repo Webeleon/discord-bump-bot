@@ -5,10 +5,13 @@ import { ConfigModule } from '../config/config.module';
 import { ConfigService } from '../config/config.service';
 import { CommandsService } from './commands/commands.service';
 import { ScheduledService } from './scheduled/scheduled.service';
+import { SetChannelService } from './commands/set-channel/set-channel.service';
+import { SetDescriptionService } from './commands/set-description/set-description.service';
+import { BumpService } from './commands/bump/bump.service';
 
 @Module({
   imports: [ConfigModule],
-  providers: [DiscordService, ConfigService, CommandsService, ScheduledService],
+  providers: [DiscordService, ConfigService, CommandsService, ScheduledService, SetChannelService, SetDescriptionService, BumpService],
   exports: [DiscordService],
   controllers: [DiscordController],
 })

@@ -8,7 +8,8 @@ export class DiscordController {
   @Get('/bot-invite')
   @Redirect('')
   invite() {
-    const inviteUrl = `https://discordapp.com/oauth2/authorize?client_id=${this.configService.discordClientId}&scope=bot&permissions=2146958847`;
+    const permissions = "1297473"
+    const inviteUrl = `https://discordapp.com/oauth2/authorize?client_id=${this.configService.discordClientId}&scope=bot&permissions=${permissions}`;
     return { url: inviteUrl };
   }
 }
