@@ -2,7 +2,7 @@
 
 2 moderation type commands: !setChannel !setDescription
 1 api type command: !bump (every hour)
-1 api integration: top.gg, every upvote grant a free bump
+1 api integration: top.gg, every upvote grant a free bump (https://top.gg/api/docs#jslib)
 
 
 ## Endpoints

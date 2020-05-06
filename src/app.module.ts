@@ -7,6 +7,7 @@ import { ConfigModule } from './config/config.module';
 import { DiscordModule } from './discord/discord.module';
 import { ConfigService } from './config/config.service';
 import { ServerModule } from './server/server.module';
+import { BumpModule } from './bump/bump.module';
 
 const config = new ConfigService();
 @Module({
@@ -14,7 +15,7 @@ const config = new ConfigService();
     MongooseModule.forRoot(
       config.mongoURL, { useNewUrlParser: true }
     ),
-    ConfigModule, DiscordModule, ScheduleModule.forRoot(), ServerModule
+    ConfigModule, DiscordModule, ScheduleModule.forRoot(), ServerModule, BumpModule
   ],
   controllers: [AppController],
 })

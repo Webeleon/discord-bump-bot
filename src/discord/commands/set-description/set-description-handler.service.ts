@@ -5,7 +5,7 @@ import { ICommandService } from '../../../interfaces/ICommandService';
 import { ServerService } from '../../../server/server.service';
 
 @Injectable()
-export class SetDescriptionService implements ICommandService {
+export class SetDescriptionHandler implements ICommandService {
   constructor(
     private readonly serverService: ServerService
   ) {}
