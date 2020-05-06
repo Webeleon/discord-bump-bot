@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { ConfigModule } from './config/config.module';
 import { DiscordModule } from './discord/discord.module';
 import { ConfigService } from './config/config.service';
+import { ServerModule } from './server/server.module';
 
 const config = new ConfigService();
 @Module({
@@ -13,7 +14,7 @@ const config = new ConfigService();
     MongooseModule.forRoot(
       config.mongoURL, { useNewUrlParser: true }
     ),
-    ConfigModule, DiscordModule, ScheduleModule.forRoot()
+    ConfigModule, DiscordModule, ScheduleModule.forRoot(), ServerModule
   ],
   controllers: [AppController],
 })

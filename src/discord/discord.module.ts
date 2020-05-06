@@ -8,9 +8,10 @@ import { ScheduledService } from './scheduled/scheduled.service';
 import { SetChannelService } from './commands/set-channel/set-channel.service';
 import { SetDescriptionService } from './commands/set-description/set-description.service';
 import { BumpService } from './commands/bump/bump.service';
+import { ServerModule } from '../server/server.module';
 
 @Module({
-  imports: [ConfigModule],
+  imports: [ConfigModule, ServerModule],
   providers: [DiscordService, ConfigService, CommandsService, ScheduledService, SetChannelService, SetDescriptionService, BumpService],
   exports: [DiscordService],
   controllers: [DiscordController],
