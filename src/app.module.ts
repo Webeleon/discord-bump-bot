@@ -8,6 +8,8 @@ import { DiscordModule } from './discord/discord.module';
 import { ConfigService } from './config/config.service';
 import { ServerModule } from './server/server.module';
 import { BumpModule } from './bump/bump.module';
+import { TopggModule } from './topgg/topgg.module';
+import { MemberModule } from './member/member.module';
 
 const config = new ConfigService();
 @Module({
@@ -18,6 +20,8 @@ const config = new ConfigService();
     ScheduleModule.forRoot(),
     ServerModule,
     BumpModule,
+    TopggModule,
+    MemberModule,
   ],
   controllers: [AppController],
 })

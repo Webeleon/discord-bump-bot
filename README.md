@@ -38,6 +38,9 @@ $ npm install
 - DISCORD_API_TOKEN
 - DISCORD_CLIENT_ID
 - MONGO_URL
+- TOP_GG_TOKEN
+- TOP_GG_HOOK_PORT
+- TOP_GG_HOOK_PASSWORD
 
 ## Running the app
 

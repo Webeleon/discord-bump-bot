@@ -10,9 +10,11 @@ import { SetDescriptionHandler } from './commands/set-description/set-descriptio
 import { BumpHandler } from './commands/bump/bump-handler.service';
 import { ServerModule } from '../server/server.module';
 import { BumpModule } from '../bump/bump.module';
+import { MemberModule } from '../member/member.module';
+import { TopggModule } from '../topgg/topgg.module';
 
 @Module({
-  imports: [ConfigModule, ServerModule, BumpModule],
+  imports: [ConfigModule, ServerModule, BumpModule, MemberModule, TopggModule],
   providers: [
     DiscordService,
     ConfigService,
