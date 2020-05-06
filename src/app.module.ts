@@ -12,10 +12,12 @@ import { BumpModule } from './bump/bump.module';
 const config = new ConfigService();
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      config.mongoURL, { useNewUrlParser: true }
-    ),
-    ConfigModule, DiscordModule, ScheduleModule.forRoot(), ServerModule, BumpModule
+    MongooseModule.forRoot(config.mongoURL, { useNewUrlParser: true }),
+    ConfigModule,
+    DiscordModule,
+    ScheduleModule.forRoot(),
+    ServerModule,
+    BumpModule,
   ],
   controllers: [AppController],
 })

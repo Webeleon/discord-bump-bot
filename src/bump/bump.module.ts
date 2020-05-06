@@ -4,12 +4,8 @@ import { BumpService } from './bump.service';
 import { bumpSchema } from './bump.model';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([
-      { name: 'Bump', schema: bumpSchema }
-    ])
-  ],
+  imports: [MongooseModule.forFeature([{ name: 'Bump', schema: bumpSchema }])],
   providers: [BumpService],
-  exports: [BumpService]
+  exports: [BumpService],
 })
 export class BumpModule {}

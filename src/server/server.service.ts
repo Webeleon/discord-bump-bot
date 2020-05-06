@@ -8,7 +8,7 @@ import { IServerDocument } from './server.interfaces';
 @Injectable()
 export class ServerService {
   constructor(
-    @InjectModel('Server') private serverModel: Model<IServerDocument>
+    @InjectModel('Server') private serverModel: Model<IServerDocument>,
   ) {}
 
   async setDescription(serverId: string, description: string): Promise<void> {
@@ -29,7 +29,7 @@ export class ServerService {
     if (moment() > moment(server.lastBump).add(1, 'hours')) {
       return true;
     }
-    return false
+    return false;
   }
 
   async markAsBumped(serverId: string): Promise<void> {
@@ -47,7 +47,7 @@ export class ServerService {
     if (!guild) {
       return await this.serverModel.create({
         serverId: serverId,
-      })
+      });
     }
     return guild;
   }

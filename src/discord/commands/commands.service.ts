@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Client, Message } from 'discord.js';
 
 import { ICommandService } from '../../interfaces/ICommandService';
@@ -13,11 +13,9 @@ export class CommandsService {
   constructor(
     setChannel: SetChannelHandler,
     setDescription: SetDescriptionHandler,
-    bumpService: BumpHandler
+    bumpService: BumpHandler,
   ) {
-    this.commandHandlers = [
-      setChannel, setDescription, bumpService,
-    ]
+    this.commandHandlers = [setChannel, setDescription, bumpService];
   }
   register(client: Client) {
     client.on('message', async message => await this.messageHandler(message));

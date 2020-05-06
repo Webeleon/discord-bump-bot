@@ -16,17 +16,29 @@ export class BumpHandler implements ICommandService {
 
   async execute(message: Message): Promise<void> {
     Logger.debug(`Bump requested for server ${message.guild.id}`);
-    const serverCanBeBumped = await this.serverService.canBeBumped(message.guild.id);
+    const serverCanBeBumped = await this.serverService.canBeBumped(
+      message.guild.id,
+    );
     const userHaveFreeBump = false;
     if (serverCanBeBumped) {
       await this.bumpService.registerBump(message.guild.id);
       await this.serverService.markAsBumped(message.guild.id);
-      message.reply('MESSAGE FOR SUCCESSFUL BUMP')
+      message.reply(
+        'Your server has been successfully bumped!\n' +
+          '**Vote for our bot to get a free bump, you can get a free bump every 12 hours by voting!**\n' +
+          'Looking for support? join our support server!',
+      );
     } else if (userHaveFreeBump) {
       await this.bumpService.registerBump(message.guild.id);
-      message.reply('MESSAGE FOR FREE BUMP')
+      message.reply(
+        'Your server has been successfully bumped!\n' +
+          '**You can vote for our bot again in 12 hours and get a free bump again!**\n' +
+          'Looking for support? join our support server!',
+      );
     } else {
-      message.reply('MESSAGE NOT BUMPABLE, upvote the bot on top.gg or come back in X')
+      message.reply(
+        'Your bump has failed please try again, if the issue persists please join our support server to report the issue!',
+      );
     }
   }
 }

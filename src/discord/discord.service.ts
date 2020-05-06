@@ -12,7 +12,7 @@ export class DiscordService {
   constructor(
     private readonly config: ConfigService,
     private readonly commandService: CommandsService,
-    ) {}
+  ) {}
 
   connect() {
     this.client = new Client();
@@ -25,5 +25,4 @@ export class DiscordService {
 
     this.client.login(this.config.discordToken);
   }
-
 }

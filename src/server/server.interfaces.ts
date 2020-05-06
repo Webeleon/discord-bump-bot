@@ -7,4 +7,4 @@ export interface IServer {
   description: string;
 }
 
-export interface IServerDocument extends IServer, Document {};
+export interface IServerDocument extends IServer, Document {}

@@ -5,13 +5,11 @@ import { IBump, IBumpDocument } from './bump.interfaces';
 
 @Injectable()
 export class BumpService {
-  constructor(
-    @InjectModel('Bump') private bumpModel: Model<IBumpDocument>
-  ) {}
+  constructor(@InjectModel('Bump') private bumpModel: Model<IBumpDocument>) {}
 
   async registerBump(serverId: string): Promise<void> {
     await this.bumpModel.create({
-      serverId
+      serverId,
     });
   }
 
@@ -24,7 +22,7 @@ export class BumpService {
 
   async done(bump: IBump): Promise<void> {
     await this.bumpModel.deleteMany({
-      serverId: bump.serverId
+      serverId: bump.serverId,
     });
   }
 }

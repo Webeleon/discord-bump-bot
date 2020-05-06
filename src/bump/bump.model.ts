@@ -1,7 +1,10 @@
-import * as mongoose from "mongoose";
+import * as mongoose from 'mongoose';
 
-export const bumpSchema = new mongoose.Schema({
-  serverId: String,
-}, {
-  timestamps: true,
-});
+export const bumpSchema = new mongoose.Schema(
+  {
+    serverId: String,
+  },
+  {
+    timestamps: true,
+  },
+);
