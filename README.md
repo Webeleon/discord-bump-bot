@@ -4,21 +4,37 @@
 1 api type command: !bump (every hour)
 1 api integration: top.gg, every upvote grant a free bump (https://top.gg/api/docs#jslib)
 
+## Getting started
+### prerequisite:
+- node 10+
+- mongodb
+
+### Configuration with .env
+Copy the file `.env.template` as `.env` and fill it
+```
+DISCORD_API_TOKEN=
+DISCORD_CLIENT_ID=
+MONGO_URL=
+TOP_GG_TOKEN=
+TOP_GG_HOOK_PORT=
+TOP_GG_HOOK_PASSWORD=
+```
+
+If you prefer, you can just set environnement variables.
+ 
+### Install and start
+
+- install the dependencies:
+`npm install`
+
+- run the bot
+`npm start`
+
 
 ## Endpoints
 
 - [GET] /discord/bot-invite
 helper method that redirect to the bot invite link
-
-- [POST] /
-create a new channel: body should comply to the `IChannelConfig` interface;
-
-- [PUT] /:channelId
-Update an existing channel: body should comply to the `IChannelConfig` interface;
-
-- [DELETE] /:guildId/:channelId
-Mark a channel for deletion. It will be rename as to be delete (defined in the constant `CHANNEL_WILL_BE_DELETED`);
-The channel deletion will occur during a cron tab action only when all members are disconnected
 
 ## Description
 
