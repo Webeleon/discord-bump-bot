@@ -27,9 +27,9 @@ export class BumpScheduled {
 
     for (const bump of bumps) {
       try {
-        const embed = await this.generateEmbed(bump);
+        const message = await this.generateMessage(bump);
         for (const server of servers) {
-          await this.sendAdToServer(bump, server, embed);
+          await this.sendAdToServer(bump, server, message);
         }
         await this.bumpService.done(bump);
       } catch (error) {
@@ -40,7 +40,7 @@ export class BumpScheduled {
     }
   }
 
-  async generateEmbed(bump: IBump): Promise<any> {
+  async generateMessage(bump: IBump): Promise<any> {
     const server = await this.serverService.getServer(bump.serverId);
     const guild = await this.discordService.client.guilds.resolve(
       bump.serverId,
@@ -67,36 +67,38 @@ export class BumpScheduled {
       `${emojis.size > 10 ? '...' : ''}`;
 
     return {
-      title: `:link: ${guild.name}`,
-      description: server.description,
-      url: invite.url,
-      thumbnail: {
-        url: await guild.iconURL(),
+      content: `${guild.name}\n${server.description.replace(/\\n/g, '\n')}`,
+      embed: {
+        title: `:link: **Join server**`,
+        url: invite.url,
+        thumbnail: {
+          url: await guild.iconURL(),
+        },
+        image: {
+          url: await guild.bannerURL(),
+        },
+        fields: [
+          {
+            name: `:family_mwgb: Members \`${guild.memberCount}\``,
+            value: `Online \`${online}\` | Idle: \`${idle}\` | Do Not Disturb: \`${doNotDisturb}\``,
+          },
+          {
+            name: `:grey_exclamation: Misc`,
+            value: `Roles: \`${roles}\` | Channels: \`${channels}\` | Bots: \`${bots}\` | Humans: \`${humans}\``,
+          },
+          {
+            name: `:smiley: Total Emojis \`${emojis.size}\``,
+            value: emojisDemo || ':person_shrugging:',
+          },
+        ],
       },
-      image: {
-        url: await guild.bannerURL(),
-      },
-      fields: [
-        {
-          name: `:family_mwgb: Members \`${guild.memberCount}\``,
-          value: `Online \`${online}\` | Idle: \`${idle}\` | Do Not Disturb: \`${doNotDisturb}\``,
-        },
-        {
-          name: `:grey_exclamation: Misc`,
-          value: `Roles: \`${roles}\` | Channels: \`${channels}\` | Bots: \`${bots}\` | Humans: \`${humans}\``,
-        },
-        {
-          name: `:smiley: Total Emojis \`${emojis.size}\``,
-          value: emojisDemo || ':person_shrugging:',
-        },
-      ],
     };
   }
 
   async sendAdToServer(
     bump: IBump,
     server: IServer,
-    embed: any,
+    message: any,
   ): Promise<void> {
     if (server.serverId === bump.serverId) return; // not sending the ad to the bumped server
     if (!server.advertisementChannel) {
@@ -106,7 +108,7 @@ export class BumpScheduled {
       const channel = await this.discordService.client.channels.fetch(
         server.advertisementChannel,
       );
-      await (channel as TextChannel).send({ embed });
+      await (channel as TextChannel).send(message);
     } catch (error) {
       Logger.error(
         `Error while sending ad to server: ${server.serverId}\n${error.message}`,

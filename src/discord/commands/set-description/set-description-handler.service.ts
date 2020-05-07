@@ -17,10 +17,9 @@ export class SetDescriptionHandler implements ICommandService {
     Logger.debug(
       `Setting description for server ${message.guild.id} to: ${description}`,
     );
-    // Any restrictions?
     await this.serverService.setDescription(message.guild.id, description);
     message.reply(`You've just set the server description to: 
-${description}
+${description.replace(/\\n/g, '\n')}
     `);
   }
 }

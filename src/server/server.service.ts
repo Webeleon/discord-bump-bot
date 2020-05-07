@@ -32,6 +32,13 @@ export class ServerService {
     return false;
   }
 
+  async nextBumpIn(serverId: string): Promise<string> {
+    const server = await this.getServer(serverId);
+    return moment(server.lastBump)
+      .add(1, 'hours')
+      .fromNow();
+  }
+
   async markAsBumped(serverId: string): Promise<void> {
     const server = await this.getServer(serverId);
     server.lastBump = new Date();
