@@ -20,8 +20,10 @@ export class SetChannelHandler implements ICommandService {
     // Any restrictrion?
 
     await this.serverService.setChannel(message.guild.id, message.channel.id);
-    message.reply(
-      `You've just set the advertisement channel to the current channel`,
-    );
+    message.reply({
+      embed: {
+        description: `You've just set the advertisement channel to the current channel`,
+      },
+    });
   }
 }

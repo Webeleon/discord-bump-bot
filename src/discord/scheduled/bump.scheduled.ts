@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { TextChannel, Guild } from 'discord.js';
+import { TextChannel } from 'discord.js';
 
 import { ServerService } from '../../server/server.service';
 import { BumpService } from '../../bump/bump.service';
@@ -67,9 +67,13 @@ export class BumpScheduled {
       `${emojis.size > 10 ? '...' : ''}`;
 
     return {
-      content: `${guild.name}\n${server.description.replace(/\\n/g, '\n')}`,
       embed: {
-        title: `:link: **Join server**`,
+        description: `${guild.name}
+        
+  ${server.description.replace(/\\n/g, '\n')}
+        
+[:link: **Join server**](${invite.url})        
+        `,
         url: invite.url,
         thumbnail: {
           url: await guild.iconURL(),

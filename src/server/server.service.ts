@@ -5,6 +5,7 @@ import * as moment from 'moment';
 
 import { IServerDocument } from './server.interfaces';
 
+const BUMP_INTERVAL_UNIT = 'hours';
 @Injectable()
 export class ServerService {
   constructor(
@@ -26,7 +27,7 @@ export class ServerService {
   async canBeBumped(serverId: string): Promise<boolean | string> {
     const server = await this.getServer(serverId);
     if (!server.lastBump) return true;
-    if (moment() > moment(server.lastBump).add(1, 'hours')) {
+    if (moment() > moment(server.lastBump).add(1, BUMP_INTERVAL_UNIT)) {
       return true;
     }
     return false;
@@ -35,7 +36,7 @@ export class ServerService {
   async nextBumpIn(serverId: string): Promise<string> {
     const server = await this.getServer(serverId);
     return moment(server.lastBump)
-      .add(1, 'hours')
+      .add(1, BUMP_INTERVAL_UNIT)
       .fromNow();
   }
 

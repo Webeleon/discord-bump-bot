@@ -26,6 +26,7 @@ export class CommandsService {
     const { content } = message;
     for (const handler of this.commandHandlers) {
       if (handler.test(content)) {
+        Logger.debug(message);
         await handler.execute(message);
       }
     }

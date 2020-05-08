@@ -13,13 +13,16 @@ export class SetDescriptionHandler implements ICommandService {
   }
 
   async execute(message: Message): Promise<void> {
-    const [_, description] = message.content.match(/!setDescription (.*)/);
+    const description = message.content.replace('!setDescription', '').trim();
     Logger.debug(
       `Setting description for server ${message.guild.id} to: ${description}`,
     );
     await this.serverService.setDescription(message.guild.id, description);
-    message.reply(`You've just set the server description to: 
-${description.replace(/\\n/g, '\n')}
-    `);
+    message.reply({
+      embed: {
+        description: `You've just set the server description to: 
+${description}`,
+      },
+    });
   }
 }
