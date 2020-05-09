@@ -13,11 +13,10 @@ export class SetChannelHandler implements ICommandService {
   }
 
   async execute(message: Message): Promise<void> {
+    if (!message.member.hasPermission('ADMINISTRATOR')) return;
     Logger.debug(
       `Setting channel ${message.channel.id} for server ${message.guild.id}`,
     );
-
-    // Any restrictrion?
 
     await this.serverService.setChannel(message.guild.id, message.channel.id);
     message.reply({

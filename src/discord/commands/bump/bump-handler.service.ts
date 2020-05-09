@@ -19,12 +19,31 @@ export class BumpHandler implements ICommandService {
   async execute(message: Message): Promise<void> {
     Logger.debug(`Bump requested for server ${message.guild.id}`);
     try {
+      const server = await this.serverService.getServer(message.guild.id);
       const serverCanBeBumped = await this.serverService.canBeBumped(
         message.guild.id,
       );
       const memberHaveFreeBump = await this.memberService.hasFreeBump(
         message.author.id,
       );
+      if (!server.description || !server.advertisementChannel) {
+        message.reply({
+          embed: {
+            description: `Your bump has failed. You need to set a description and an advertisement channel before bumping.`,
+            fields: [
+              {
+                name: 'set a description',
+                value: '`!setDescription <description goes here>`',
+              },
+              {
+                name: 'set the advertisement channel',
+                value: '`!setChannel`',
+              },
+            ],
+          },
+        });
+        return;
+      }
       if (serverCanBeBumped) {
         await this.bumpService.registerBump(message.guild.id);
         await this.serverService.markAsBumped(message.guild.id);
