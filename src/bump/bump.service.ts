@@ -10,6 +10,7 @@ export class BumpService {
   async registerBump(serverId: string): Promise<void> {
     await this.bumpModel.create({
       serverId,
+      retry: 0,
     });
   }
 
@@ -24,5 +25,19 @@ export class BumpService {
     await this.bumpModel.deleteMany({
       serverId: bump.serverId,
     });
+  }
+
+  async registerRetry(bump: IBump): Promise<void> {
+    if (bump.retries == 1) {
+      await this.done(bump);
+    }
+    await this.bumpModel.findOneAndUpdate(
+      { serverId: bump.serverId },
+      {
+        $set: {
+          retries: 1,
+        },
+      },
+    );
   }
 }

@@ -26,6 +26,11 @@ export class BumpScheduled {
     Logger.debug(`sending ${bumps.length} to ${servers.length} servers`);
 
     for (const bump of bumps) {
+      const isServerAccessible = await this.isServerAccessible(bump.serverId);
+      if (!isServerAccessible) {
+        await this.bumpService.registerRetry(bump);
+        continue;
+      }
       try {
         const message = await this.generateMessage(bump);
         for (const server of servers) {
@@ -99,6 +104,11 @@ export class BumpScheduled {
     };
   }
 
+  async isServerAccessible(serverId: string): Promise<boolean> {
+    const guild = await this.discordService.client.guilds.resolve(serverId);
+    return !!guild;
+  }
+
   async sendAdToServer(
     bump: IBump,
     server: IServer,
@@ -112,6 +122,7 @@ export class BumpScheduled {
       const channel = await this.discordService.client.channels.fetch(
         server.advertisementChannel,
       );
+      if (!channel) return;
       await (channel as TextChannel).send(message);
     } catch (error) {
       Logger.error(

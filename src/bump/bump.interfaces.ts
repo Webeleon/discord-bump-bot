@@ -2,6 +2,7 @@ import { Document } from 'mongoose';
 
 export interface IBump {
   serverId: string;
+  retries: number;
   createdAt: Date;
   updatedAt: Date;
 }
