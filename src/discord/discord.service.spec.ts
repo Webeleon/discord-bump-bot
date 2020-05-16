@@ -15,6 +15,7 @@ import { MemberModule } from '../member/member.module';
 import { BumpScheduled } from './scheduled/bump.scheduled';
 import { InviteHandler } from './commands/invite/invite.handler';
 import { HelpHandler } from './commands/help/help.handler';
+import { VoteHandler } from './commands/vote/vote.handler';
 
 describe('DiscordService', () => {
   let service: DiscordService;
@@ -40,6 +41,7 @@ describe('DiscordService', () => {
         BumpHandler,
         InviteHandler,
         HelpHandler,
+        VoteHandler,
       ],
     }).compile();
 

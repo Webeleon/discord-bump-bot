@@ -15,6 +15,7 @@ import { SetDescriptionHandler } from '../commands/set-description/set-descripti
 import { BumpHandler } from '../commands/bump/bump-handler.service';
 import { InviteHandler } from '../commands/invite/invite.handler';
 import { HelpHandler } from '../commands/help/help.handler';
+import { VoteHandler } from '../commands/vote/vote.handler';
 
 describe('BumpScheduledService', () => {
   let service: BumpScheduled;
@@ -40,6 +41,7 @@ describe('BumpScheduledService', () => {
         BumpHandler,
         InviteHandler,
         HelpHandler,
+        VoteHandler,
       ],
     }).compile();
 

@@ -14,6 +14,7 @@ import { SetDescriptionHandler } from './set-description/set-description.handler
 import { BumpHandler } from './bump/bump-handler.service';
 import { InviteHandler } from './invite/invite.handler';
 import { HelpHandler } from './help/help.handler';
+import { VoteHandler } from './vote/vote.handler';
 
 describe('CommandsService', () => {
   let service: CommandsService;
@@ -39,6 +40,7 @@ describe('CommandsService', () => {
         BumpHandler,
         InviteHandler,
         HelpHandler,
+        VoteHandler,
       ],
     }).compile();
 

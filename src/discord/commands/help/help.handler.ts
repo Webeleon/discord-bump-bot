@@ -10,6 +10,20 @@ export class HelpHandler implements ICommandService {
   }
 
   async execute(message: Message): Promise<void> {
-    message.reply('TODO: IMPLEMENT');
+    message.reply({
+      embed: {
+        description: `
+Join our support server if you got questions.
+
+!setchannel sets the advertisment channel
+
+!setdescription sets the server advertisement
+
+!bump bumps the server, every 1 hour.
+
+!invite shows link to invite bot to the server        
+        `,
+      },
+    });
   }
 }

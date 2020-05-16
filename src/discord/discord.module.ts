@@ -14,6 +14,7 @@ import { MemberModule } from '../member/member.module';
 import { TopggModule } from '../topgg/topgg.module';
 import { HelpHandler } from './commands/help/help.handler';
 import { InviteHandler } from './commands/invite/invite.handler';
+import { VoteHandler } from './commands/vote/vote.handler';
 
 @Module({
   imports: [ConfigModule, ServerModule, BumpModule, MemberModule, TopggModule],
@@ -27,6 +28,7 @@ import { InviteHandler } from './commands/invite/invite.handler';
     BumpHandler,
     HelpHandler,
     InviteHandler,
+    VoteHandler,
   ],
   exports: [DiscordService],
   controllers: [DiscordController],
