@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MongooseModule } from '@nestjs/mongoose';
-import { SetDescriptionHandler } from './set-description-handler.service';
+import { SetDescriptionHandler } from './set-description.handler';
 import { ServerModule } from '../../../server/server.module';
 import { ConfigService } from '../../../config/config.service';
 
@@ -22,5 +22,14 @@ describe('SetDescriptionHandler', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  it('should respond to !setDescription and !setdesc case insensitive', () => {
+    expect(service.test('!setDescription')).toBeTruthy();
+    expect(service.test('!setdescription')).toBeTruthy();
+    expect(service.test('!SETDESCRIPTION')).toBeTruthy();
+    expect(service.test('!setDesc')).toBeTruthy();
+    expect(service.test('!setdesc')).toBeTruthy();
+    expect(service.test('!SETDESC')).toBeTruthy();
   });
 });

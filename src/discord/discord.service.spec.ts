@@ -6,13 +6,15 @@ import { DiscordService } from './discord.service';
 import { ConfigService } from '../config/config.service';
 import { TopggModule } from '../topgg/topgg.module';
 import { CommandsService } from './commands/commands.service';
-import { SetChannelHandler } from './commands/set-channel/set-channel-handler.service';
-import { SetDescriptionHandler } from './commands/set-description/set-description-handler.service';
+import { SetChannelHandler } from './commands/set-channel/set-channel.handler';
+import { SetDescriptionHandler } from './commands/set-description/set-description.handler';
 import { BumpHandler } from './commands/bump/bump-handler.service';
 import { ServerModule } from '../server/server.module';
 import { BumpModule } from '../bump/bump.module';
 import { MemberModule } from '../member/member.module';
 import { BumpScheduled } from './scheduled/bump.scheduled';
+import { InviteHandler } from './commands/invite/invite.handler';
+import { HelpHandler } from './commands/help/help.handler';
 
 describe('DiscordService', () => {
   let service: DiscordService;
@@ -36,6 +38,8 @@ describe('DiscordService', () => {
         SetChannelHandler,
         SetDescriptionHandler,
         BumpHandler,
+        InviteHandler,
+        HelpHandler,
       ],
     }).compile();
 

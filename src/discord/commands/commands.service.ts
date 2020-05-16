@@ -3,8 +3,10 @@ import { Client, Message } from 'discord.js';
 
 import { ICommandService } from '../../interfaces/ICommandService';
 import { BumpHandler } from './bump/bump-handler.service';
-import { SetChannelHandler } from './set-channel/set-channel-handler.service';
-import { SetDescriptionHandler } from './set-description/set-description-handler.service';
+import { SetChannelHandler } from './set-channel/set-channel.handler';
+import { SetDescriptionHandler } from './set-description/set-description.handler';
+import { InviteHandler } from './invite/invite.handler';
+import { HelpHandler } from './help/help.handler';
 
 @Injectable()
 export class CommandsService {
@@ -13,9 +15,11 @@ export class CommandsService {
   constructor(
     setChannel: SetChannelHandler,
     setDescription: SetDescriptionHandler,
-    bumpService: BumpHandler,
+    bump: BumpHandler,
+    invite: InviteHandler,
+    help: HelpHandler,
   ) {
-    this.commandHandlers = [setChannel, setDescription, bumpService];
+    this.commandHandlers = [setChannel, setDescription, bump, help, invite];
   }
   register(client: Client) {
     client.on('message', async message => await this.messageHandler(message));

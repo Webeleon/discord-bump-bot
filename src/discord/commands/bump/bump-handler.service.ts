@@ -13,7 +13,7 @@ export class BumpHandler implements ICommandService {
     private readonly memberService: MemberService,
   ) {}
   test(content: string): boolean {
-    return /!bump/.test(content);
+    return /!bump/i.test(content);
   }
 
   async execute(message: Message): Promise<void> {

@@ -27,4 +27,9 @@ describe('BumpHandler', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('should respond to !bump case insensitive', () => {
+    expect(service.test('!bump')).toBeTruthy();
+    expect(service.test('!BUMP')).toBeTruthy();
+  });
 });

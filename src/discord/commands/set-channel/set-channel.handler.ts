@@ -5,25 +5,23 @@ import { ICommandService } from '../../../interfaces/ICommandService';
 import { ServerService } from '../../../server/server.service';
 
 @Injectable()
-export class SetDescriptionHandler implements ICommandService {
+export class SetChannelHandler implements ICommandService {
   constructor(private readonly serverService: ServerService) {}
 
   test(content: string): boolean {
-    return /!setDescription.*/.test(content);
+    return /!set(-)?Chan(nel)?.*/i.test(content);
   }
 
   async execute(message: Message): Promise<void> {
     if (!message.member.hasPermission('ADMINISTRATOR')) return;
-    const description = message.content.replace('!setDescription', '').trim();
     Logger.debug(
-      `Setting description for server ${message.guild.id} to: ${description}`,
+      `Setting channel ${message.channel.id} for server ${message.guild.id}`,
     );
 
-    await this.serverService.setDescription(message.guild.id, description);
+    await this.serverService.setChannel(message.guild.id, message.channel.id);
     message.reply({
       embed: {
-        description: `You've just set the server description to: 
-${description}`,
+        description: `You've just set the advertisement channel to the current channel`,
       },
     });
   }

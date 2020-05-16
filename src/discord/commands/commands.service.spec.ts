@@ -9,9 +9,11 @@ import { TopggModule } from '../../topgg/topgg.module';
 import { DiscordService } from '../discord.service';
 import { ConfigService } from '../../config/config.service';
 import { BumpScheduled } from '../scheduled/bump.scheduled';
-import { SetChannelHandler } from './set-channel/set-channel-handler.service';
-import { SetDescriptionHandler } from './set-description/set-description-handler.service';
+import { SetChannelHandler } from './set-channel/set-channel.handler';
+import { SetDescriptionHandler } from './set-description/set-description.handler';
 import { BumpHandler } from './bump/bump-handler.service';
+import { InviteHandler } from './invite/invite.handler';
+import { HelpHandler } from './help/help.handler';
 
 describe('CommandsService', () => {
   let service: CommandsService;
@@ -35,6 +37,8 @@ describe('CommandsService', () => {
         SetChannelHandler,
         SetDescriptionHandler,
         BumpHandler,
+        InviteHandler,
+        HelpHandler,
       ],
     }).compile();
 
