@@ -26,8 +26,4 @@ export class DiscordService {
     this.client.login(this.config.discordToken);
     return this.client;
   }
-
-  getInviteLink() {
-    return `https://discordapp.com/api/oauth2/authorize?client_id=${this.config.discordClientId}&scope=bot&permissions=27681`;
-  }
 }

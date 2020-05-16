@@ -24,4 +24,8 @@ export class ConfigService {
 
     this.mongoURL = process.env.MONGO_URL || 'mongodb://localhost/bump-bot';
   }
+
+  getInviteLink() {
+    return `https://discordapp.com/api/oauth2/authorize?client_id=${this.discordClientId}&scope=bot&permissions=27681`;
+  }
 }

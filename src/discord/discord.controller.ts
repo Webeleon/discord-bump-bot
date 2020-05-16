@@ -9,7 +9,7 @@ export class DiscordController {
   @Redirect('')
   invite() {
     const permissions = '1297473';
-    const inviteUrl = `https://discordapp.com/oauth2/authorize?client_id=${this.configService.discordClientId}&scope=bot&permissions=${permissions}`;
+    const inviteUrl = this.configService.getInviteLink();
     return { url: inviteUrl };
   }
 }

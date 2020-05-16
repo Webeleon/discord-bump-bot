@@ -13,7 +13,7 @@ export class InviteHandler implements ICommandService {
   }
 
   async execute(message: Message): Promise<void> {
-    const botInviteLink = `https://discordapp.com/api/oauth2/authorize?client_id=${this.config.discordClientId}&scope=bot&permissions=27681`;
+    const botInviteLink = this.config.getInviteLink();
     message.reply({
       embed: {
         title: botInviteLink,

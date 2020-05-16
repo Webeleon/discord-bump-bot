@@ -12,17 +12,23 @@ export class HelpHandler implements ICommandService {
   async execute(message: Message): Promise<void> {
     message.reply({
       embed: {
-        description: `
-Join our support server if you got questions.
+        title: 'Commands',
+        fields: [
+          {
+            name: 'Join our support server if you got questions.',
+            value: `
+**\`!setchannel\` sets the advertisment channel**
+alias: \`!setchan\`
 
-!setchannel sets the advertisment channel
+**\`!setdescription\` sets the server advertisement**
+alias: \`!setdesc\`
 
-!setdescription sets the server advertisement
+**\`!bump\` bumps the server, every 1 hour.**
 
-!bump bumps the server, every 1 hour.
-
-!invite shows link to invite bot to the server        
-        `,
+**\`!invite\` shows link to invite bot to the server**
+`,
+          },
+        ],
       },
     });
   }

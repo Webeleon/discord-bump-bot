@@ -35,6 +35,7 @@ export class CommandsService {
   }
 
   async messageHandler(message: Message) {
+    Logger.debug(message);
     if (message.author.bot) return;
     const { content } = message;
     for (const handler of this.commandHandlers) {
