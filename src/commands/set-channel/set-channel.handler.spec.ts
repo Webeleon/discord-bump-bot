@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SetChannelHandler } from './set-channel.handler';
-import { ServerModule } from '../../../server/server.module';
-import { ConfigService } from '../../../config/config.service';
+import { ServerModule } from '../../server/server.module';
+import { ConfigService } from '../../config/config.service';
 
 describe('SetChannelHandler', () => {
   let service: SetChannelHandler;

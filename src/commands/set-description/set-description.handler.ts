@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Message } from 'discord.js';
 
-import { ICommandService } from '../../../interfaces/ICommandService';
-import { ServerService } from '../../../server/server.service';
+import { ICommandService } from '../../interfaces/ICommandService';
+import { ServerService } from '../../server/server.service';
 
 @Injectable()
 export class SetDescriptionHandler implements ICommandService {

@@ -1,9 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Message } from 'discord.js';
-import { ICommandService } from '../../../interfaces/ICommandService';
-import { ServerService } from '../../../server/server.service';
-import { BumpService } from '../../../bump/bump.service';
-import { MemberService } from '../../../member/member.service';
+import { ICommandService } from '../../interfaces/ICommandService';
+import { ServerService } from '../../server/server.service';
+import { BumpService } from '../../bump/bump.service';
+import { MemberService } from '../../member/member.service';
 
 @Injectable()
 export class BumpHandler implements ICommandService {

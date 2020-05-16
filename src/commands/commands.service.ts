@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Client, Message } from 'discord.js';
 
-import { ICommandService } from '../../interfaces/ICommandService';
+import { ICommandService } from '../interfaces/ICommandService';
 import { BumpHandler } from './bump/bump-handler.service';
 import { SetChannelHandler } from './set-channel/set-channel.handler';
 import { SetDescriptionHandler } from './set-description/set-description.handler';

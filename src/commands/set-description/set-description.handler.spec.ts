@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SetDescriptionHandler } from './set-description.handler';
-import { ServerModule } from '../../../server/server.module';
-import { ConfigService } from '../../../config/config.service';
+import { ServerModule } from '../../server/server.module';
+import { ConfigService } from '../../config/config.service';
 
 describe('SetDescriptionHandler', () => {
   let service: SetDescriptionHandler;

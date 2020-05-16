@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BumpHandler } from './bump-handler.service';
-import { ServerModule } from '../../../server/server.module';
-import { ConfigService } from '../../../config/config.service';
-import { BumpModule } from '../../../bump/bump.module';
-import { MemberModule } from '../../../member/member.module';
+import { ServerModule } from '../../server/server.module';
+import { ConfigService } from '../../config/config.service';
+import { BumpModule } from '../../bump/bump.module';
+import { MemberModule } from '../../member/member.module';
 
 describe('BumpHandler', () => {
   let service: BumpHandler;
