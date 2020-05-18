@@ -16,7 +16,7 @@ export class BumpScheduled {
     private readonly discordService: DiscordService,
   ) {}
 
-  @Cron(CronExpression.EVERY_SECOND)
+  @Cron(CronExpression.EVERY_MINUTE)
   async sendBumped() {
     if (!this.discordService.ready) return;
     const bumps = await this.bumpService.getBumps();
