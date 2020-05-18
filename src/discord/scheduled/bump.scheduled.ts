@@ -100,6 +100,7 @@ export class BumpScheduled {
             value: emojisDemo || ':person_shrugging:',
           },
         ],
+        timestamp: new Date(),
       },
     };
   }
