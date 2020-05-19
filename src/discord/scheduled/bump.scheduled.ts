@@ -77,7 +77,7 @@ export class BumpScheduled {
         
   ${server.description.replace(/\\n/g, '\n')}
         
-[:link: **Join server**](${invite.url})        
+:link: **[Join server](${invite.url})**        
         `,
         url: invite.url,
         thumbnail: {
