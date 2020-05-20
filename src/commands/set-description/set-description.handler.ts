@@ -13,7 +13,7 @@ export class SetDescriptionHandler implements ICommandService {
   }
 
   async execute(message: Message): Promise<void> {
-    if (!message.member.hasPermission('ADMINISTRATOR')) return;
+    if (!message.member.hasPermission('MANAGE_GUILD')) return;
     const description = message.content
       .replace(/!set(-)?Desc(ription)?/i, '')
       .trim();

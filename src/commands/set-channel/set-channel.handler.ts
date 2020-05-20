@@ -13,7 +13,7 @@ export class SetChannelHandler implements ICommandService {
   }
 
   async execute(message: Message): Promise<void> {
-    if (!message.member.hasPermission('ADMINISTRATOR')) return;
+    if (!message.member.hasPermission('MANAGE_GUILD')) return;
     Logger.debug(
       `Setting channel ${message.channel.id} for server ${message.guild.id}`,
     );
