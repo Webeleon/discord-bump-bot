@@ -31,5 +31,6 @@ describe('SetChannelHandler', () => {
     expect(service.test('!setChan')).toBeTruthy();
     expect(service.test('!setchan')).toBeTruthy();
     expect(service.test('!SETCHAN')).toBeTruthy();
+    expect(service.test('something !SETCHAN')).toBeFalsy();
   });
 });

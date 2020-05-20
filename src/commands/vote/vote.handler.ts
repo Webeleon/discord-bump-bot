@@ -6,7 +6,7 @@ import { ICommandService } from '../../interfaces/ICommandService';
 @Injectable()
 export class VoteHandler implements ICommandService {
   test(content: string): boolean {
-    return /!vote/i.test(content);
+    return /^!vote/i.test(content);
   }
 
   async execute(message: Message): Promise<void> {

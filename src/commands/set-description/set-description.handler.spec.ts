@@ -31,5 +31,6 @@ describe('SetDescriptionHandler', () => {
     expect(service.test('!setDesc')).toBeTruthy();
     expect(service.test('!setdesc')).toBeTruthy();
     expect(service.test('!SETDESC')).toBeTruthy();
+    expect(service.test('something !SETDESC')).toBeFalsy();
   });
 });

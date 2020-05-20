@@ -9,7 +9,7 @@ export class InviteHandler implements ICommandService {
   constructor(private readonly config: ConfigService) {}
 
   test(content: string): boolean {
-    return /!invite/i.test(content);
+    return /^!invite/i.test(content);
   }
 
   async execute(message: Message): Promise<void> {

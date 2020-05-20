@@ -21,5 +21,6 @@ describe('InviteHandler', () => {
   it('should respond to !invite case insensitive', () => {
     expect(service.test('!invite')).toBeTruthy();
     expect(service.test('!INVITE')).toBeTruthy();
+    expect(service.test('something !INVITE')).toBeFalsy();
   });
 });

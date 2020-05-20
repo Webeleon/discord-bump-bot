@@ -31,5 +31,6 @@ describe('BumpHandler', () => {
   it('should respond to !bump case insensitive', () => {
     expect(service.test('!bump')).toBeTruthy();
     expect(service.test('!BUMP')).toBeTruthy();
+    expect(service.test('something !BUMP')).toBeFalsy();
   });
 });

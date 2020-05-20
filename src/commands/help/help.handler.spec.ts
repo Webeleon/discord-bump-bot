@@ -19,5 +19,6 @@ describe('HelpHandler', () => {
   it('should respond to !help case insensitive', () => {
     expect(service.test('!help')).toBeTruthy();
     expect(service.test('!HELP')).toBeTruthy();
+    expect(service.test('something !HELP')).toBeFalsy();
   });
 });

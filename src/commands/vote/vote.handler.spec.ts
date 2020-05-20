@@ -19,5 +19,6 @@ describe('VoteHandler', () => {
   it('should test on !vote case insensitive', () => {
     expect(service.test('!vote')).toBeTruthy();
     expect(service.test('!VOTE')).toBeTruthy();
+    expect(service.test('something !VOTE')).toBeFalsy();
   });
 });

@@ -9,11 +9,19 @@ export class SetChannelHandler implements ICommandService {
   constructor(private readonly serverService: ServerService) {}
 
   test(content: string): boolean {
-    return /!set(-)?Chan(nel)?.*/i.test(content);
+    return /^!set(-)?Chan(nel)?.*/i.test(content);
   }
 
   async execute(message: Message): Promise<void> {
-    if (!message.member.hasPermission('MANAGE_GUILD')) return;
+    if (!message.member.hasPermission('MANAGE_GUILD')) {
+      message.reply({
+        embed: {
+          description:
+            'You need MANAGE_GUILD (Manage Server) permission to use this command!',
+        },
+      });
+      return;
+    }
     Logger.debug(
       `Setting channel ${message.channel.id} for server ${message.guild.id}`,
     );
