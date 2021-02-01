@@ -2,9 +2,18 @@
   "name": "bump-bot",
   "version": "0.0.2",
   "description": "",
-  "author": "webeleon <julien@webeleon.dev>",
+  "contributors": [
+    {
+      "name": "Julien Prugne",
+      "email": "julien@webeleon.dev"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Webeleon/discord-bump-bot.git"
+  },
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
