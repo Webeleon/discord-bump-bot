@@ -1,8 +1,14 @@
 # Bump bot
+## Commands
+### Server admin
 
-2 moderation type commands: !setChannel !setDescription
-1 api type command: !bump (every hour)
-1 api integration: top.gg, every upvote grant a free bump (https://top.gg/api/docs#jslib)
+- `!set channel` set the advertisement channel to the currenct channel
+- `!set description` set the server description
+
+### Members
+
+- `!help` display the help message
+- `!bump` send the server ad to the network
 
 ## Getting started
 ### prerequisite:
