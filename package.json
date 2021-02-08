@@ -38,7 +38,7 @@
     "dblapi.js": "2.4.1",
     "discord.js": "12.5.1",
     "dotenv": "8.2.0",
-    "mongoose": "5.11.14",
+    "mongoose": "5.11.15",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
     "rxjs": "6.6.3"
